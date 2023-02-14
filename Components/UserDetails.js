@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Text, FlatList } from 'react-native';
+import { StyleSheet, View, Text, FlatList,Button } from 'react-native';
 import React, { useEffect, useState } from "react";
+import { useNavigation } from '@react-navigation/native';
 
 export default function UserDetails() {
+    const { navigate } = useNavigation();
     const [details, setDetails] = useState("");
     const [userName, setUserName] = useState("");
 
@@ -36,16 +38,14 @@ export default function UserDetails() {
                 <Text>User Name: {userName}</Text>
             </View>
             {/* for flatlist view */}
-            <View>
+            <View >
                 <FlatList
                     data={details}
-                    renderItem=
-                    {
-                        ({ item }) => 
-                        {
+                    renderItem= {
+                        ({ item }) => {
                             return (
                                 //for giving margine to the renderitems view
-                                <View style={{ margin: 20 }}>
+                                <View style={styles.item_style}>
                                     <View style={{ marginRight: 5 }}>
                                         <Text>
                                             country_id :"{item.country_id}"
@@ -60,8 +60,10 @@ export default function UserDetails() {
                             )
                         }
                     }
-                  
                 />
+            </View>
+            <View style={styles.buttonStyle} >
+                <Button title='Back to Home' onPress={() => navigate("Home")}  color="red"/>
             </View>
         </View>
     );
@@ -71,17 +73,32 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#DAD6F5',
-        // alignItems: 'center',
-        // justifyContent: 'center',
         width: "100%",
-    },
-    rowView: {
-        flexDirection: "row",
+       
     },
     userNameStyle: {
+        textAlign: 'center',
+        backgroundColor: 'yellow',
+        padding: 20,
         alignItems: "center",
-        justifyContent: "center",
-        marginTop: 20
-    }
-
+        marginTop: 30,
+        marginHorizontal: 16,
+       
+      },
+    buttonStyle: {
+        width: 250,
+        height: 200,
+        marginTop:50,
+        marginHorizontal: 60,
+      
+    },
+    item_style: {
+        backgroundColor: 'skyblue',
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+        marginTop: 10,
+        alignItems:"center"
+    },
+    
 });
