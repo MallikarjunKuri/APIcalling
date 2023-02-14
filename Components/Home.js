@@ -16,11 +16,9 @@ export default function Home() {
             <View style={styles.buttonStyle}>
                 <Button title='View User Details' onPress={() => navigate("User Details")} color="" />
             </View>
-
         </View>
     );
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -37,8 +35,7 @@ const styles = StyleSheet.create({
     buttonStyle: {
         width: 250,
         height: 200,
-        marginTop: 30
-
+        marginTop: 30,
     }
 
 });
