@@ -7,14 +7,11 @@ export default function Home() {
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
-            <View>
-                <Image
-                    style={styles.imageStyle}
-                    source={require('../assets/exa-blue-logo.png')}
-                />
-            </View>
+
             <View style={styles.buttonStyle}>
-                <Button title='View User Details' onPress={() => navigate("User Details")} color="" />
+                <Button title='View User Details'
+                    //  onPress={() => navigate("UserDetails")} 
+                    color="green" />
             </View>
         </View>
     );
@@ -37,5 +34,4 @@ const styles = StyleSheet.create({
         height: 200,
         marginTop: 30,
     }
-
 });
